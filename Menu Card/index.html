@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Foodie | Modern Food Court Menu</title>
+    <meta name="description"
+        content="A modern, responsive food court menu for college campuses with digital QR integration.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- QR Scan Animation Overlay -->
+    <div id="scan-overlay">
+        <div class="scanner-container">
+            <div class="scanner-dots"></div>
+        </div>
+        <div class="scanning-text">INITIALIZING...</div>
+        <p style="margin-top: 15px; color: var(--text-muted); font-size: 0.9rem;">Digital Menu Scanning</p>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" style="display: none;">
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <h1 id="home-link" style="cursor: pointer;">Campus <span>Foodie</span></h1>
+                </div>
+                <div class="header-actions">
+                    <a href="admin.html" class="add-to-cart" style="text-decoration: none; padding: 10px 18px; font-size: 0.85rem; background: var(--secondary); color: var(--text-main); font-weight: 700;">
+                        <i class="fa-solid fa-gear"></i> Admin
+                    </a>
+                    <div class="theme-toggle" id="theme-toggle" title="Toggle Dark Mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Hero Section & Search -->
+            <section class="hero-section">
+                <h2>Crave. Order. Enjoy.</h2>
+                <p>Your favorite campus bites, just a scan away.</p>
+                <div class="search-box">
+                    <input type="text" id="search-bar" placeholder="Search for Egg, coffee...">
+                </div>
+            </section>
+
+            <!-- Categories -->
+            <div class="category-wrapper">
+                <nav class="category-row">
+                    <button class="category-btn active" data-category="all">All Items</button>
+                    <button class="category-btn" data-category="Starters">Starters</button>
+                    <button class="category-btn" data-category="Main Course">Main Course</button>
+                    <button class="category-btn" data-category="Snacks">Snacks</button>
+                    <button class="category-btn" data-category="Beverages">Beverages</button>
+                </nav>
+            </div>
+
+            <!-- Floating Cart Button -->
+            <div id="cart-float-btn" class="cart-float">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count">0</span>
+            </div>
+
+            <!-- Cart Drawer -->
+            <div id="cart-drawer" class="cart-sidebar">
+                <div class="cart-header">
+                    <h3>My Order</h3>
+                    <button id="close-cart"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div id="cart-items" class="cart-items-container">
+                    <!-- Items dynamic -->
+                </div>
+                <div class="cart-footer">
+                    <div class="total-row">
+                        <span>Total Amount</span>
+                        <span id="cart-total">₹0</span>
+                    </div>
+                    <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+                </div>
+            </div>
+
+            <!-- Menu Grid -->
+            <section class="menu-container">
+                <h2 class="section-title" id="menu-title">Explore Menu</h2>
+                <div class="grid-layout" id="menu-grid">
+                    <!-- Food Items will be dynamic -->
+                </div>
+            </section>
+
+            <!-- QR Share Section -->
+            <section class="qr-section">
+                <h2 style="font-weight: 800; margin-bottom: 1rem;">Scan Menu</h2>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">Help your friends find yummy food! Scan this
+                    QR code.</p>
+                <div class="qr-container">
+                    <div id="qrcode"></div>
+                </div>
+                <p style="margin-top: 1rem; font-weight: 600; color: var(--primary);">campusfoodie.college.edu</p>
+            </section>
+        </main>
+
+        <footer
+            style="text-align: center; padding: 3rem 1rem; color: var(--text-muted); font-size: 0.9rem; background: var(--bg-light);">
+            <p>&copy; 2026 Campus Food Court. Crafted for Flavor.</p>
+            <div style="margin-top: 15px;">
+                <a href="admin.html" style="color: var(--primary); text-decoration: none; font-weight: 600;">
+                    <i class="fa-solid fa-lock"></i> Admin Dashboard
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Notifications -->
+    <div id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
